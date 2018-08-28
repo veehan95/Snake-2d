@@ -15,6 +15,10 @@ public class Snake : MonoBehaviour {
     public GameObject tailPrefab;
     // Snake Speed
     public float speed = 0.3f;
+    // reference to the GameControl Script
+    public GameControl gc;
+    // original starting position for the spaceship
+    Vector3 originalPos = new Vector3(0f, 0f, 0f);
 
     // Use this for initialization
     void Start()
@@ -74,19 +78,33 @@ public class Snake : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll)
     {
         // Food?
-        if (coll.name.StartsWith("ApplePrefab"))
+        if (coll.gameObject.name.Equals("ApplePrefab(Clone)"))
         {
             // Get longer in next Move call
             ate = true;
-
             // Remove the Food
             Destroy(coll.gameObject);
+            gc.AddScore(1);
         }
         // Collided with Tail or Border
-        else
-        {   
-            Destroy(this.gameObject);
+        else if(coll.gameObject.name.Equals("virus(Clone)"))
+        {
+            // Destroy Snake? 
+            // Destroy(this.gameObject); 
+            Destroy(coll.gameObject);
+            transform.position = originalPos;
+            gc.PlayerDie();
             // ToDo 'You lose' screen
+        }
+        else if (coll.gameObject.name.Equals("border_horizontal_top") ||
+            coll.gameObject.name.Equals("border_horizontal_bottom") ||
+            coll.gameObject.name.Equals("border_horizontal_left") ||
+            coll.gameObject.name.Equals("border_horizontal_right"))
+        {
+            // Destroy Snake? 
+            // Destroy(this.gameObject); 
+            transform.position = originalPos;
+            gc.PlayerDie();
         }
     }
 }
