@@ -9,6 +9,8 @@ TagManager:
   - Medicine
   - Virus
   - Rune
+  - WormHole
+  - Potion
   layers:
   - Default
   - TransparentFX

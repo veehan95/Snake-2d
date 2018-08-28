@@ -1,25 +1,21 @@
 # Snake-2d
 
 ## Error to fix
-riggid boddy + collision
+riggid boddy + collision (medicine, extra life, worm hole, rune)
 
 ## Not done
-scoring
-
 increase body length
-
-death
 
 menu
 
 ## done
 spawning items
 
-## if gt time
-ako x tau ape blh add
+death
 
-### Rune effect
-decide after done basic stuff
+scoring
+
+rune effect
 
 ## spawn items
 meat - add 2 score without increase body
@@ -28,4 +24,4 @@ apple - add 1 score + 1 body
 
 medicine - destroy all virus
 
-## YOLO no need set life
+potion - add 1 life point
