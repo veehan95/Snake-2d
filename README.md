@@ -22,3 +22,5 @@ decide after done basic stuff
 meat - add 2 score without increase body
 apple - add 1 score + 1 body
 medicine - destroy all virus
+
+## YOLO no need set life
