@@ -158,14 +158,14 @@ public class Snake : MonoBehaviour {
         // Collided with meat
         else if (coll.gameObject.tag.Equals("Meat"))
         {
-            // Remove the Food
+            // Remove the Meat
             Destroy(coll.gameObject);
             gc.AddScore(score_meat * mult_score);
         }
         // Collided with medicine
         else if (coll.gameObject.tag.Equals("Medicine"))
         {
-            // Remove the Food
+            // Remove the Medicine
             Destroy(coll.gameObject);
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Virus"))
                 Destroy(go);
@@ -221,6 +221,13 @@ public class Snake : MonoBehaviour {
                     loc_y = go.gameObject.transform.position.y;
                 }
             transform.position = new Vector3((loc_x + 2 * dir[0]), (loc_y + 2 * dir[1]), -1f);
+        }
+        // Collided with Potion
+        else if (coll.gameObject.tag.Equals("Potion"))
+        {
+            // Remove the Potion
+            Destroy(coll.gameObject);
+            gc.AddLife();
         }
     }
 }

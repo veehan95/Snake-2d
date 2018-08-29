@@ -7,7 +7,7 @@ public class GameControl : MonoBehaviour {
 
     // reference to the various UI text elements
     public Text Score, LifePoint, Rune, GameOver;
-    public Button MainMenu;
+    GameObject MainMenu;
 
     // Borders
     public Transform borderTop;
@@ -26,8 +26,9 @@ public class GameControl : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        MainMenu = GameObject.Find("Button");
+        MainMenu.SetActive(false);
         GameOver.enabled = false;
-        MainMenu.enabled = false;
         LifePoint.text = lifePoint.ToString();
     }
 	
@@ -94,10 +95,16 @@ public class GameControl : MonoBehaviour {
         {
             Time.timeScale = 0;
             GameOver.enabled = true;
-            MainMenu.enabled = true;
+            MainMenu.SetActive(true);
                 GameOver.text = "Game Over!\nYour Score is " + value;
             return true;
         }
         return false;
+    }
+
+    public void AddLife()
+    {
+        lifePoint++;
+        LifePoint.text = lifePoint.ToString();
     }
 }
