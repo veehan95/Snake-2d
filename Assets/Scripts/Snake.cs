@@ -7,7 +7,7 @@ public class Snake : MonoBehaviour {
     // Current Movement Direction
     // (by default it moves to the right)
     Vector2 dir = Vector2.right;
-    
+
     // Borders
     public Transform borderTop;
     public Transform borderBottom;
@@ -22,7 +22,8 @@ public class Snake : MonoBehaviour {
     
     // Tail Prefab
     public GameObject tailPrefab;
-    
+    public GameObject hasteIcon;
+
     // Snake Speed
     public float speed = 0.1f;
     
@@ -49,13 +50,94 @@ public class Snake : MonoBehaviour {
     // Booster
     public float booster_duration = 10f;
     private float booster_duration_temp;
-    public int booster_speed = 2;
+    public int booster_speed = 3;
+    public float booster_cd = 30f;
+    public float booster_cd_temp;
+
+    bool vertical = true;
+    bool horizontal = false;
 
     // Use this for initialization
     void Start()
     {
+        hasteIcon.SetActive(false);
         // Move the Snake every speed*mult_speed
-        InvokeRepeating("Move", speed / mult_speed, speed / mult_speed);
+        Move();
+    }
+
+    // Update is called once per Frame
+    void Update()
+    {
+        if (rune_duration_temp > 0)
+        {
+            rune_duration_temp -= Time.deltaTime;
+            if (rune_duration_temp <= 0)
+            {
+                if (act_rune[0] == 1)
+                    mult_speed /= act_rune[1];
+                else if (act_rune[0] == 2)
+                    mult_score /= act_rune[1];
+                gc.ShowRuneEffect("");
+            }
+        }
+
+        if (booster_duration_temp > 0)
+        {
+            booster_duration_temp -= Time.deltaTime;
+            if (booster_duration_temp <= 0)
+            {
+                hasteIcon.SetActive(true);
+                mult_speed /= booster_speed;
+            }
+        }
+
+        if (booster_cd_temp > 0)
+            booster_cd_temp -= Time.deltaTime;
+
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && booster_cd_temp <= 0)
+        {
+            booster_cd_temp = booster_cd;
+            booster_duration_temp = booster_duration;
+            mult_speed *= booster_speed;
+            hasteIcon.SetActive(true);
+        }
+
+
+        // Move in a new Direction?
+        if (Input.GetKey(KeyCode.RightArrow) && horizontal)
+        {
+            horizontal = false;
+            vertical = true;
+            dir = Vector2.right;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && vertical)
+        {
+            horizontal = true;
+            vertical = false;
+            dir = -Vector2.up;    // '-up' means 'down'
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) && horizontal)
+        {
+            horizontal = false;
+            vertical = true;
+            dir = -Vector2.right; // '-right' means 'left'
+        }
+        else if (Input.GetKey(KeyCode.UpArrow) && vertical)
+        {
+            horizontal = true;
+            vertical = false;
+            dir = Vector2.up;
+        }
+
+        //Allow the snake come out from another site of the map
+        if (transform.position.x < borderLeft.position.x + 1f)
+            transform.position = new Vector3(borderRight.position.x - 1f, transform.position.y, -1f);
+        else if (transform.position.x > borderRight.position.x - 1f)
+            transform.position = new Vector3(borderLeft.position.x + 1f, transform.position.y, -1f);
+        else if (transform.position.y < borderBottom.position.y + 1.5f)
+            transform.position = new Vector3(transform.position.x, borderTop.position.y - 1.5f, -1f);
+        else if (transform.position.y > borderTop.position.y - 1.5f)
+            transform.position = new Vector3(transform.position.x, borderBottom.position.y + 1.5f, -1f);
     }
 
     void Move()
@@ -64,7 +146,7 @@ public class Snake : MonoBehaviour {
         Vector2 v = transform.position;
 
         // Move head into new direction (now there is a gap)
-        transform.Translate(dir);
+        transform.Translate(19 * dir/9);
 
         // Ate something? Then insert new Element into gap
         if (ate)
@@ -90,58 +172,7 @@ public class Snake : MonoBehaviour {
             tail.Insert(0, tail.Last());
             tail.RemoveAt(tail.Count - 1);
         }
-    }
-
-    // Update is called once per Frame
-    void Update()
-    {
-        if (rune_duration_temp > 0)
-        {
-            rune_duration_temp -= Time.deltaTime;
-            if (rune_duration_temp <= 0)
-            {
-                if (act_rune[0] == 1)
-                    mult_speed /= act_rune[1];
-                else if (act_rune[0] == 2)
-                    mult_score /= act_rune[1];
-                gc.ShowRuneEffect("");
-            }
-        }
-
-        if (booster_duration_temp > 0)
-        {
-            booster_duration_temp -= Time.deltaTime;
-            if (booster_duration_temp <= 0)
-            {
-                mult_speed /= booster_speed;
-            }
-        }
-        
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            booster_duration_temp = booster_duration;
-            mult_speed *= mult_speed;
-        }
-
-        // Move in a new Direction?
-        if (Input.GetKey(KeyCode.RightArrow))
-            dir = Vector2.right;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            dir = -Vector2.up;    // '-up' means 'down'
-        else if (Input.GetKey(KeyCode.LeftArrow))
-            dir = -Vector2.right; // '-right' means 'left'
-        else if (Input.GetKey(KeyCode.UpArrow))
-            dir = Vector2.up;
-
-        //Allow the snake come out from another site of the map
-        if (transform.position.x < borderLeft.position.x + 1f)
-            transform.position = new Vector3(borderRight.position.x - 1f, transform.position.y, -1f);
-        else if (transform.position.x > borderRight.position.x - 1f)
-            transform.position = new Vector3(borderLeft.position.x + 1f, transform.position.y, -1f);
-        else if (transform.position.y < borderBottom.position.y + 1.5f)
-            transform.position = new Vector3(transform.position.x, borderTop.position.y - 1.5f, -1f);
-        else if (transform.position.y > borderTop.position.y - 1.5f)
-            transform.position = new Vector3(transform.position.x, borderBottom.position.y + 1.5f, -1f);
+        Invoke("Move", speed / mult_speed);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -170,7 +201,7 @@ public class Snake : MonoBehaviour {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Virus"))
                 Destroy(go);
         }
-        // Collided with Tail or Border
+        // Collided with Tail or Virus
         else if (coll.gameObject.tag.Equals("Virus") || coll.gameObject.tag.Equals("Tail"))
         {
             // Destroy Snake? 
@@ -195,7 +226,7 @@ public class Snake : MonoBehaviour {
             if (Random.Range(1, 100) % 2 == 0)
             {
                 act_rune[0] = 1;
-                act_rune[1] = temp;
+                act_rune[1] = temp + 1;
                 runeEffect = "Speed X" + temp;
                 mult_speed *= temp;
             }

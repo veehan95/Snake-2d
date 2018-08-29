@@ -403,7 +403,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score + 1
+  m_Text: 'Score + 2
 
     Increase Tail Length'
 --- !u!222 &330080761
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score + 2
+  m_Text: Score + 4
 --- !u!222 &1136249074
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2097,7 +2097,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score + 3
+  m_Text: 'Score + 6
 
     Kill All Virus'
 --- !u!222 &1587103215

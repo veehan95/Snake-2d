@@ -12,6 +12,7 @@ TagManager:
   - WormHole
   - Potion
   - Button
+  - Tail
   layers:
   - Default
   - TransparentFX

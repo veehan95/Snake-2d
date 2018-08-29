@@ -9,6 +9,9 @@ public class GameControl : MonoBehaviour {
     public Text Score, LifePoint, Rune, GameOver;
     GameObject MainMenu;
 
+    public AudioSource Dead;
+    public AudioSource Bgm;
+
     // Borders
     public Transform borderTop;
     public Transform borderBottom;
@@ -26,6 +29,9 @@ public class GameControl : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        //Start BGM
+        Bgm.Play();
+
         MainMenu = GameObject.Find("Button");
         MainMenu.SetActive(false);
         GameOver.enabled = false;
@@ -95,6 +101,11 @@ public class GameControl : MonoBehaviour {
         {
             Time.timeScale = 0;
             GameOver.enabled = true;
+
+            //Change Sound Effect
+            Bgm.Stop();
+            Dead.Play();
+
             MainMenu.SetActive(true);
                 GameOver.text = "Game Over!\nYour Score is " + value;
             return true;
