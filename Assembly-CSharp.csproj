@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\SFX.cs" />
     <Compile Include="Assets\Scripts\Snake.cs" />
     <Compile Include="Assets\Scripts\SpawnMeat.cs" />
     <Compile Include="Assets\Scripts\SpawnMedicine.cs" />
