@@ -1,12 +1,16 @@
 # Snake-2d
 
 ## Error to fix
-riggid boddy + collision (medicine, extra life, worm hole, rune)
+riggid boddy + collision (potion, worm hole)
 
 head cover by body
 
 ## Not done
-menu
+Credit - Joshua's id
+
+Game - GG main menu button cant hide
+
+Help - Esc and shift(booster for 30s) btn
 
 ## done
 spawning items
@@ -16,12 +20,3 @@ death
 scoring
 
 rune effect
-
-## spawn items
-meat - add 2 score without increase body
-
-apple - add 1 score + 1 body
-
-medicine - destroy all virus
-
-potion - add 1 life point

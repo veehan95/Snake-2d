@@ -10,9 +10,11 @@ public class MainMenu : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            Application.LoadLevel("MainMenu");
+    }
 
     public void ChangeScene(string sceneName)
     {
