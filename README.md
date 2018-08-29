@@ -2,13 +2,12 @@
 
 ## Error to fix
 
-head cover by body
+gap appear between head and tail
 
-Snake.cs line 58 InvokeRepeat speed not updating
+Snake.cs line 61 InvokeRepeat speed not updating, causing problem
+
+rune wont give speed buff
 
 # to do
-disable snake reverse
-
-snake tail kills player
 
 difficulty
