@@ -7,6 +7,8 @@ public class SFX : MonoBehaviour
 {
     public AudioSource Eat;
     public AudioSource Blip;
+    public AudioSource Rune;
+    public AudioSource WormHole;
 
     // Use this for initialization
     void Start()
@@ -36,6 +38,14 @@ public class SFX : MonoBehaviour
         else if (coll.gameObject.tag.Equals("Potion"))
         {
             Eat.Play();
+        }
+        else if (coll.gameObject.tag.Equals("Rune"))
+        {
+            Rune.Play();
+        }
+        else if (coll.gameObject.tag.Equals("WormHole"))
+        {
+            WormHole.Play();
         }
         else if (coll.gameObject.tag.Equals("Virus"))
         {
