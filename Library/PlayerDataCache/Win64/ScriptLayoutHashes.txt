@@ -125,7 +125,7 @@ e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSyste
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-de2646459542e6f083a9d9057831cda6 Assembly-CSharp.dll:.SFX
+de1512b5563fafc9cf75ba6514fbb6b0 Assembly-CSharp.dll:.SFX
 3c497b4ded12425147074162a4bd6a49 Assembly-CSharp.dll:.SpawnMeat
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 1fb6139edc0fbdb4cd1057d9ad6f17a6 Assembly-CSharp.dll:.SpawnMedicine
