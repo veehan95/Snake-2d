@@ -49,7 +49,7 @@ public class Snake : MonoBehaviour {
     void Start()
     {
         // Move the Snake every speed*mult_speed
-        InvokeRepeating("Move", speed * mult_speed, speed * mult_speed);
+        InvokeRepeating("Move", speed / mult_speed, speed / mult_speed);
     }
 
     void Move()

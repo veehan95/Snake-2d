@@ -3,9 +3,9 @@
 ## Error to fix
 riggid boddy + collision (medicine, extra life, worm hole, rune)
 
-## Not done
-increase body length
+head cover by body
 
+## Not done
 menu
 
 ## done
