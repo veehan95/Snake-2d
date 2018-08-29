@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{2862F5E9-38DD-A290-A279-2DF4669CC410}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake-2d", "Assembly-CSharp.csproj", "{2862F5E9-38DD-A290-A279-2DF4669CC410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

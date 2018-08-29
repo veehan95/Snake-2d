@@ -20,4 +20,9 @@ public class MainMenu : MonoBehaviour {
     {
         Application.LoadLevel(sceneName);
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

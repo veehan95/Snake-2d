@@ -228,7 +228,7 @@ public class Snake : MonoBehaviour {
                 act_rune[0] = 1;
                 act_rune[1] = temp + 1;
                 runeEffect = "Speed X" + temp;
-                mult_speed *= temp;
+                mult_speed *= temp + 1;
             }
             else
             {

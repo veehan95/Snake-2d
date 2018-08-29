@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/new/Snake-2d/Snake-2d.exe
+C:/Snake-2d/Snake-2d.exe
 SceneListBegin?
 Assets/MainMenu.unity
 Assets/GameScene.unity
@@ -116,7 +116,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-00d8d267aa7be105fbea0e5c5587fb43 Assembly-CSharp.dll:.SFX
+d878638356dd1260bc39cdd624a40f52 Assembly-CSharp.dll:.SFX
 03d541348dae32f5aa1d8d10805f258f Assembly-CSharp.dll:.SpawnMeat
 49d9fce6c20af87198abfb4f76de6ed0 Assembly-CSharp.dll:.SpawnMedicine
 d3ab39f820bf270cf40c86d8e50ecf58 Assembly-CSharp.dll:.GameControl
