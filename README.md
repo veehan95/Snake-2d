@@ -11,12 +11,3 @@ Credit - Joshua's id
 Game - GG main menu button cant hide
 
 Help - Esc and shift(booster for 30s) btn
-
-## done
-spawning items
-
-death
-
-scoring
-
-rune effect
