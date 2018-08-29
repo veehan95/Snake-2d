@@ -1,7 +1,7 @@
 # Snake-2d
 
 ## Error to fix
-riggid boddy + collision (potion, worm hole)
+riggid boddy + collision (potion)
 
 head cover by body
 
