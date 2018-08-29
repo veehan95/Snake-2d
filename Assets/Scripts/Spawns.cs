@@ -9,6 +9,7 @@ public class Spawns : MonoBehaviour {
     public GameObject medPrefab;
     public GameObject virusPrefab;
     public GameObject runePrefab;
+    public GameObject holePrefab;
 
     // Borders
     public Transform borderTop;
@@ -22,6 +23,7 @@ public class Spawns : MonoBehaviour {
     public float timeLeft_med = 40f;
     public float timeLeft_wall = 10f;
     public float timeLeft_rune = 30f;
+    public float timeLeft_hole = 40f;
 
     //  Expire Time
     public float timeKill_meat = 10f;
@@ -29,6 +31,7 @@ public class Spawns : MonoBehaviour {
     public float timeKill_rune = 10f;
 
     //  Expire Time Temp
+    public float timeTemp_food = 0;
     public float timeTemp_meat = 0;
     public float timeTemp_med = 0;
     public float timeTemp_rune = 0;
@@ -42,12 +45,12 @@ public class Spawns : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        SpawnFood();
-        InvokeRepeating("SpawnFood", (float)(timeLeft_food * 0.2), timeLeft_food);
+        timeTemp_food = timeLeft_food;
         InvokeRepeating("SpawnMeat", (float)(timeLeft_meat * 0.2), timeLeft_meat);
         InvokeRepeating("SpawnMed", (float)(timeLeft_med * 0.2), timeLeft_med);
         InvokeRepeating("SpawnWall", (float)(timeLeft_wall * 0.2), timeLeft_wall);
         InvokeRepeating("SpawnRune", (float)(timeLeft_rune * 0.2), timeLeft_rune);
+        InvokeRepeating("SpawnWormHole", (float)(timeLeft_hole * 0.2), timeLeft_hole);
     }
 
     // Update is called once per Frame
@@ -70,11 +73,18 @@ public class Spawns : MonoBehaviour {
                 timeTemp_rune -= Time.deltaTime;
             else if (GameObject.FindGameObjectWithTag("Rune"))
                 Destroy(GameObject.FindGameObjectWithTag("Rune"));
-}
+
+        if (!GameObject.FindGameObjectWithTag("Apple") || timeTemp_food <= 0)
+            SpawnFood();
+        else
+            timeTemp_food -= Time.deltaTime;
+    }
 
     // Spawn one piece of food
     void SpawnFood()
     {
+        timeTemp_food = timeLeft_food;
+
         int[] loc = SpawnLoc();
 
         if (GameObject.FindGameObjectWithTag("Apple"))
@@ -143,6 +153,25 @@ public class Spawns : MonoBehaviour {
         Instantiate(runePrefab,
                     new Vector2(loc[0], loc[1]),
                     Quaternion.identity); // default rotation
+
+        timeTemp_rune = timeKill_rune;
+    }
+
+    // Spawn one set of worm hole
+    void SpawnWormHole()
+    {
+        if (GameObject.FindGameObjectsWithTag("WormHole").Length > 0)
+            foreach (GameObject wh in GameObject.FindGameObjectsWithTag("WormHole"))
+                Destroy(wh);
+
+        for(int i = 0; i < 2; i++)
+        {
+            int[] loc = SpawnLoc();
+            // Instantiate the wall at (loc[0], loc[1])
+            Instantiate(holePrefab,
+                        new Vector2(loc[0], loc[1]),
+                        Quaternion.identity); // default rotation
+        }
 
         timeTemp_rune = timeKill_rune;
     }

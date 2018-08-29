@@ -1,31 +1,17 @@
 # Snake-2d
 
 ## Error to fix
-riggid boddy + collision
+riggid boddy + collision (potion)
 
-## Not done
-scoring
+head cover by body
 
-increase body length
+Snake.cs line 58 InvokeRepeat speed not updating
 
-death
+Game - GG main menu button cant hide
 
-menu
+# to do
+disable snake reverse
 
-## done
-spawning items
+snake tail kills player
 
-## if gt time
-ako x tau ape blh add
-
-### Rune effect
-decide after done basic stuff
-
-## spawn items
-meat - add 2 score without increase body
-
-apple - add 1 score + 1 body
-
-medicine - destroy all virus
-
-## YOLO no need set life
+difficulty

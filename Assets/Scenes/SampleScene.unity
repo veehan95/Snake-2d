@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 318315957}
   - component: {fileID: 318315956}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: 215}
+  m_AnchoredPosition: {x: -315, y: 210}
   m_SizeDelta: {x: 50, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &318315956
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 372992800}
   - component: {fileID: 372992799}
   m_Layer: 5
-  m_Name: High Score
+  m_Name: Life Point Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 215}
+  m_AnchoredPosition: {x: 385, y: 210}
   m_SizeDelta: {x: 50, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &372992799
@@ -465,6 +465,7 @@ MonoBehaviour:
   virusPrefab: {fileID: 1471102670656286, guid: 03431a4ae7bc0cb409593dd7b0afce38,
     type: 2}
   runePrefab: {fileID: 1715206679478092, guid: 3961c88b0a4f75746aff496e7e5be398, type: 2}
+  holePrefab: {fileID: 1348987325267846, guid: 31f8f5300b822ce499541f27a309f7d6, type: 2}
   borderTop: {fileID: 1354974616}
   borderBottom: {fileID: 1285469921}
   borderLeft: {fileID: 324050992}
@@ -474,14 +475,16 @@ MonoBehaviour:
   timeLeft_med: 30
   timeLeft_wall: 10
   timeLeft_rune: 30
+  timeLeft_hole: 40
   timeKill_meat: 10
   timeKill_med: 10
   timeKill_rune: 10
+  timeTemp_food: 0
   timeTemp_meat: 0
   timeTemp_med: 0
   timeTemp_rune: 0
   max_wall_num: 5
-  med_trigger: 0.8
+  med_trigger: 0.2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -531,6 +534,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &536289573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 536289574}
+  - component: {fileID: 536289576}
+  - component: {fileID: 536289575}
+  m_Layer: 5
+  m_Name: Game Over
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &536289574
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 536289573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1521247781}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 128.6}
+  m_SizeDelta: {x: 906, y: 101.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &536289575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 536289573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Game Over
+
+    You Score ????'
+--- !u!222 &536289576
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 536289573}
 --- !u!1 &727575446
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +621,7 @@ GameObject:
   - component: {fileID: 727575449}
   - component: {fileID: 727575448}
   m_Layer: 5
-  m_Name: High Score Label
+  m_Name: Life Point Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 340, y: 215}
+  m_AnchoredPosition: {x: 370, y: 210}
   m_SizeDelta: {x: 100, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727575448
@@ -598,7 +677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'High Score:'
+  m_Text: 'Life:'
 --- !u!222 &727575449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -659,8 +738,20 @@ Prefab:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 0.48940903
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 0.55022454
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0.8867924
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1351b8c0dc062f14b9e4214bd6f861d0, type: 2}
+  m_ParentPrefab: {fileID: 0}
   m_IsPrefabParent: 0
 --- !u!1 &1285469919
 GameObject:
@@ -794,7 +885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 215}
+  m_AnchoredPosition: {x: 0, y: 210}
   m_SizeDelta: {x: 500, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308072955
@@ -809,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9150943, g: 0.06474723, b: 0.06474723, a: 1}
+  m_Color: {r: 0.18481879, g: 0.9137255, b: 0.066666685, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -920,7 +1011,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -947,6 +1038,7 @@ GameObject:
   - component: {fileID: 1521247780}
   - component: {fileID: 1521247779}
   - component: {fileID: 1521247778}
+  - component: {fileID: 1521247782}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1026,6 +1118,7 @@ RectTransform:
   - {fileID: 727575447}
   - {fileID: 372992798}
   - {fileID: 1308072954}
+  - {fileID: 536289574}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1034,6 +1127,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1521247782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1521247777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd17668954ff6d498e041f62d942db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: {fileID: 318315956}
+  LifePoint: {fileID: 372992799}
+  Rune: {fileID: 1308072955}
+  GameOver: {fileID: 536289575}
+  borderTop: {fileID: 1354974616}
+  borderBottom: {fileID: 1285469921}
+  borderLeft: {fileID: 324050992}
+  borderRight: {fileID: 1745162923}
+  value: 0
+  lifePoint: 3
+  timeTemp_potion: 0
+  timeLeft_potion: 40
+  potionPrefab: {fileID: 1389658093732688, guid: e2625d2727d086940af0e526446c5ba4,
+    type: 2}
 --- !u!1 &1663067207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -380, y: 215}
+  m_AnchoredPosition: {x: -365, y: 210}
   m_SizeDelta: {x: 50, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1663067209
@@ -1111,8 +1229,7 @@ CanvasRenderer:
 --- !u!1 &1692500989
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1452978495271204, guid: 1351b8c0dc062f14b9e4214bd6f861d0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 983514537}
   serializedVersion: 5
   m_Component:
@@ -1139,14 +1256,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c4da4fcdaecfd41b031a1885e78672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  borderTop: {fileID: 1354974616}
+  borderBottom: {fileID: 1285469921}
+  borderLeft: {fileID: 324050992}
+  borderRight: {fileID: 1745162923}
   tailPrefab: {fileID: 1730479075839728, guid: 6736b7829f8b4f74aa4036af92d26eeb, type: 2}
-  speed: 0.3
+  speed: 0.1
+  gc: {fileID: 1521247782}
+  score_rune: 3
+  score_meat: 2
+  score_apple: 1
+  rune_duration: 10
+  rune_duration_temp: 0
+  double_rune_mult: 2
+  triple_rune_mult: 3
 --- !u!50 &1692500991
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 50681918742983190, guid: 1351b8c0dc062f14b9e4214bd6f861d0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 983514537}
   m_GameObject: {fileID: 1692500989}
   m_BodyType: 0
@@ -1165,8 +1293,7 @@ Rigidbody2D:
 --- !u!61 &1692500992
 BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61059812766058986, guid: 1351b8c0dc062f14b9e4214bd6f861d0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 983514537}
   m_GameObject: {fileID: 1692500989}
   m_Enabled: 1
@@ -1191,8 +1318,7 @@ BoxCollider2D:
 --- !u!212 &1692500993
 SpriteRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212772782048095850, guid: 1351b8c0dc062f14b9e4214bd6f861d0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 983514537}
   m_GameObject: {fileID: 1692500989}
   m_Enabled: 1
@@ -1225,7 +1351,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 52d22479c1a15ac43b735a6f443db537, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48940903, g: 0.55022454, b: 0.8867924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1237,8 +1363,7 @@ SpriteRenderer:
 --- !u!4 &1692500994
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4645794454414296, guid: 1351b8c0dc062f14b9e4214bd6f861d0,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 983514537}
   m_GameObject: {fileID: 1692500989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
