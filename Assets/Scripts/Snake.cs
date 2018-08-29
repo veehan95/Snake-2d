@@ -110,14 +110,14 @@ public class Snake : MonoBehaviour {
             dir = Vector2.up;
 
         //Allow the snake come out from another site of the map
-        if (transform.position.x > borderRight.position.x - 1f)
-            transform.position = new Vector3(-transform.position.x + 1f, transform.position.y, -1f);
-        else if (transform.position.x < borderLeft.position.x + 1f)
-            transform.position = new Vector3(-transform.position.x - 1f, transform.position.y, -1f);
-        else if (transform.position.y > borderTop.position.y - 2f)
-            transform.position = new Vector3(transform.position.x, -transform.position.y + 1f, -1f);
-        else if (transform.position.y < borderBottom.position.y + 2f)
-            transform.position = new Vector3(transform.position.x, -transform.position.y - 1f, -1f);
+        if (transform.position.x < borderLeft.position.x + 1f)
+            transform.position = new Vector3(borderRight.position.x - 1f, transform.position.y, -1f);
+        else if (transform.position.x > borderRight.position.x - 1f)
+            transform.position = new Vector3(borderLeft.position.x + 1f, transform.position.y, -1f);
+        else if (transform.position.y < borderBottom.position.y + 1.5f)
+            transform.position = new Vector3(transform.position.x, borderTop.position.y - 1.5f, -1f);
+        else if (transform.position.y > borderTop.position.y - 1.5f)
+            transform.position = new Vector3(transform.position.x, borderBottom.position.y + 1.5f, -1f);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -186,13 +186,13 @@ public class Snake : MonoBehaviour {
         else if (coll.gameObject.tag.Equals("WormHole"))
         {
             float loc_y = transform.position.y, loc_x = transform.position.x;
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("WornHole"))
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("WormHole"))
                 if (go != coll.gameObject)
                 {
-                    loc_x = coll.gameObject.transform.position.x;
-                    loc_y = coll.gameObject.transform.position.y;
+                    loc_x = go.gameObject.transform.position.x;
+                    loc_y = go.gameObject.transform.position.y;
                 }
-            transform.position = new Vector3((loc_x + Random.Range(-1,3)), (loc_y + Random.Range(-1, 3)), -1f);
+            transform.position = new Vector3((loc_x + 2 * dir[0]), (loc_y + 2 * dir[1]), -1f);
         }
     }
 }

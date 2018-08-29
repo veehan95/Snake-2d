@@ -7,6 +7,7 @@ public class GameControl : MonoBehaviour {
 
     // reference to the various UI text elements
     public Text Score, LifePoint, Rune, GameOver;
+    public Button MainMenu;
 
     // Borders
     public Transform borderTop;
@@ -26,7 +27,7 @@ public class GameControl : MonoBehaviour {
     void Start ()
     {
         GameOver.enabled = false;
-        Time.timeScale = 1;
+        MainMenu.enabled = false;
         LifePoint.text = lifePoint.ToString();
     }
 	
@@ -38,8 +39,6 @@ public class GameControl : MonoBehaviour {
                 timeTemp_potion -= Time.deltaTime;
             else if (GameObject.FindGameObjectWithTag("Potion"))
                 Destroy(GameObject.FindGameObjectWithTag("Potion"));
-        if (value % 10 == 0 && !GameObject.FindGameObjectWithTag("Potion") && value != 0)
-            SpawnPotion();
     }
 
     // Spawn one piece of potion
@@ -72,6 +71,8 @@ public class GameControl : MonoBehaviour {
     // called from another script
     public void AddScore(int num)
     {
+        if ((int)(value / 10) != (int)((value += num) / 10) && !GameObject.FindGameObjectWithTag("Potion") && value != 0)
+            SpawnPotion();
         value += num;
         Score.text = value.ToString();
     }
@@ -79,11 +80,6 @@ public class GameControl : MonoBehaviour {
     public void ShowRuneEffect(string runeEffect)
     {
         Rune.text = runeEffect;
-    }
-
-    public void StartGame()
-    {
-        Time.timeScale = 1;
     }
 
     public bool PlayerDie()
@@ -94,7 +90,8 @@ public class GameControl : MonoBehaviour {
         {
             Time.timeScale = 0;
             GameOver.enabled = true;
-            GameOver.text = "Game Over!\nYour Score is " + value;
+            MainMenu.enabled = true;
+                GameOver.text = "Game Over!\nYour Score is " + value;
             return true;
         }
         return false;
