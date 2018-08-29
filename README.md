@@ -4,7 +4,9 @@
 
 gap appear between head and tail
 
-Snake.cs line 58 InvokeRepeat speed not updating, causing problem
+Snake.cs line 61 InvokeRepeat speed not updating, causing problem
+
+rune wont give speed buff
 
 # to do
 
