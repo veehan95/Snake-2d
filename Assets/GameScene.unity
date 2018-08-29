@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 291950310}
   - component: {fileID: 291950309}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e8e5853b2303ff042b249776211e84b1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.412
   m_Pitch: 1
   Loop: 0
@@ -733,9 +733,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: dc3c4253e70cac64ba0642346b23d268, type: 3}
     m_FontSize: 80
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 100
@@ -745,7 +745,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game Over
+  m_Text: 'YOU DIED
 
     You Score ????'
 --- !u!222 &536289576
@@ -1652,6 +1652,7 @@ MonoBehaviour:
   Rune: {fileID: 1308072955}
   GameOver: {fileID: 536289575}
   Dead: {fileID: 536289577}
+  Bgm: {fileID: 291950309}
   borderTop: {fileID: 1354974616}
   borderBottom: {fileID: 1285469921}
   borderLeft: {fileID: 324050992}

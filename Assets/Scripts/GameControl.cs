@@ -10,6 +10,7 @@ public class GameControl : MonoBehaviour {
     GameObject MainMenu;
 
     public AudioSource Dead;
+    public AudioSource Bgm;
 
     // Borders
     public Transform borderTop;
@@ -28,6 +29,9 @@ public class GameControl : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        //Start BGM
+        Bgm.Play();
+
         MainMenu = GameObject.Find("Button");
         MainMenu.SetActive(false);
         GameOver.enabled = false;
@@ -97,7 +101,11 @@ public class GameControl : MonoBehaviour {
         {
             Time.timeScale = 0;
             GameOver.enabled = true;
+
+            //Change Sound Effect
+            Bgm.Stop();
             Dead.Play();
+
             MainMenu.SetActive(true);
                 GameOver.text = "Game Over!\nYour Score is " + value;
             return true;
