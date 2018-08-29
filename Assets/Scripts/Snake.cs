@@ -38,12 +38,18 @@ public class Snake : MonoBehaviour {
     public int score_apple = 1;
 
     // Rune effect
+    private int[] act_rune = new int[2];
     public float rune_duration = 10f;
     public float rune_duration_temp;
     public int double_rune_mult = 2;
     public int triple_rune_mult = 3;
     private int mult_score = 1;
     private int mult_speed = 1;
+
+    // Booster
+    public float booster_duration = 10f;
+    private float booster_duration_temp;
+    public int booster_speed = 2;
 
     // Use this for initialization
     void Start()
@@ -94,11 +100,29 @@ public class Snake : MonoBehaviour {
             rune_duration_temp -= Time.deltaTime;
             if (rune_duration_temp <= 0)
             {
-                mult_score = 1;
-                mult_speed = 1;
+                if (act_rune[0] == 1)
+                    mult_speed /= act_rune[1];
+                else if (act_rune[0] == 2)
+                    mult_score /= act_rune[1];
                 gc.ShowRuneEffect("");
             }
         }
+
+        if (booster_duration_temp > 0)
+        {
+            booster_duration_temp -= Time.deltaTime;
+            if (booster_duration_temp <= 0)
+            {
+                mult_speed /= booster_speed;
+            }
+        }
+        
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            booster_duration_temp = booster_duration;
+            mult_speed *= mult_speed;
+        }
+
         // Move in a new Direction?
         if (Input.GetKey(KeyCode.RightArrow))
             dir = Vector2.right;
@@ -170,13 +194,17 @@ public class Snake : MonoBehaviour {
             string runeEffect;
             if (Random.Range(1, 100) % 2 == 0)
             {
+                act_rune[0] = 1;
+                act_rune[1] = temp;
                 runeEffect = "Speed X" + temp;
-                mult_speed = temp;
+                mult_speed *= temp;
             }
             else
             {
+                act_rune[0] = 2;
+                act_rune[1] = temp;
                 runeEffect = "Score X" + temp;
-                mult_score = temp;
+                mult_score *= temp;
             }
 
             gc.ShowRuneEffect(runeEffect);

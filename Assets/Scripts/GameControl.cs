@@ -34,11 +34,15 @@ public class GameControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (GameObject.FindGameObjectWithTag("Potion"))
+        /*if (GameObject.FindGameObjectWithTag("Potion"))
             if (timeTemp_potion > 0)
                 timeTemp_potion -= Time.deltaTime;
             else if (GameObject.FindGameObjectWithTag("Potion"))
                 Destroy(GameObject.FindGameObjectWithTag("Potion"));
+                */
+
+        if (!GameObject.FindGameObjectWithTag("Potion"))
+            SpawnPotion();
     }
 
     // Spawn one piece of potion

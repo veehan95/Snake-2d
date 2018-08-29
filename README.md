@@ -5,6 +5,8 @@ riggid boddy + collision (potion, worm hole)
 
 head cover by body
 
+Snake.cs line 58 InvokeRepeat speed not updating
+
 ## Not done
 Credit - Joshua's id
 
