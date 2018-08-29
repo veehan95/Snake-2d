@@ -22,7 +22,8 @@ public class Snake : MonoBehaviour {
     
     // Tail Prefab
     public GameObject tailPrefab;
-    
+    public GameObject hasteIcon;
+
     // Snake Speed
     public float speed = 0.1f;
     
@@ -49,7 +50,9 @@ public class Snake : MonoBehaviour {
     // Booster
     public float booster_duration = 10f;
     private float booster_duration_temp;
-    public int booster_speed = 2;
+    public int booster_speed = 3;
+    public float booster_cd = 30f;
+    public float booster_cd_temp;
 
     bool vertical = true;
     bool horizontal = false;
@@ -57,8 +60,9 @@ public class Snake : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        hasteIcon.SetActive(false);
         // Move the Snake every speed*mult_speed
-        InvokeRepeating("Move", 0.3f, 0.3f);
+        Move();
     }
 
     // Update is called once per Frame
@@ -82,9 +86,22 @@ public class Snake : MonoBehaviour {
             booster_duration_temp -= Time.deltaTime;
             if (booster_duration_temp <= 0)
             {
+                hasteIcon.SetActive(true);
                 mult_speed /= booster_speed;
             }
         }
+
+        if (booster_cd_temp > 0)
+            booster_cd_temp -= Time.deltaTime;
+
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && booster_cd_temp <= 0)
+        {
+            booster_cd_temp = booster_cd;
+            booster_duration_temp = booster_duration;
+            mult_speed *= booster_speed;
+            hasteIcon.SetActive(true);
+        }
+
 
         // Move in a new Direction?
         if (Input.GetKey(KeyCode.RightArrow) && horizontal)
@@ -155,6 +172,7 @@ public class Snake : MonoBehaviour {
             tail.Insert(0, tail.Last());
             tail.RemoveAt(tail.Count - 1);
         }
+        Invoke("Move", speed / mult_speed);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -208,7 +226,7 @@ public class Snake : MonoBehaviour {
             if (Random.Range(1, 100) % 2 == 0)
             {
                 act_rune[0] = 1;
-                act_rune[1] = temp;
+                act_rune[1] = temp + 1;
                 runeEffect = "Speed X" + temp;
                 mult_speed *= temp;
             }
