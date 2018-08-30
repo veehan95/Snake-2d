@@ -51,6 +51,10 @@ public class SFX : MonoBehaviour
         {
             Blip.Play();
         }
+        else if (coll.gameObject.tag.Equals("Tail"))
+        {
+            Blip.Play();
+        }
 
     }
 }
