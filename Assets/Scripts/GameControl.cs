@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        Time.timeScale = 1;
         //Start BGM
         Bgm.Play();
 
