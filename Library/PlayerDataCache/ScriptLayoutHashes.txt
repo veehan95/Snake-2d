@@ -118,6 +118,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 d878638356dd1260bc39cdd624a40f52 Assembly-CSharp.dll:.SFX
 03d541348dae32f5aa1d8d10805f258f Assembly-CSharp.dll:.SpawnMeat
+5be2989753fc8b74257694332bcab44d Assembly-CSharp.dll:.OnClickSound
 49d9fce6c20af87198abfb4f76de6ed0 Assembly-CSharp.dll:.SpawnMedicine
 d3ab39f820bf270cf40c86d8e50ecf58 Assembly-CSharp.dll:.GameControl
 32e8fe00b63ed946490b898f6024a2f2 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
